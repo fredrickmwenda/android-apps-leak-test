@@ -93,12 +93,11 @@ authorities = get_authority(data3, key_authority, indices)
 
 #run each value in authorities in adb shell Content query content:// then pass quthority using subprocess
 for authority in authorities:
-    subprocess.call(["adb", "shell", "Content", "query", "content://", authority], shell=True)
+    subprocess.call(["adb", "shell", "Content", "query", "uri", "content://", authority], shell=True)
     time.sleep(1)
 # subprocess.call(["adb", "shell", "Content", "query", "content://", authority], shell=True)
 
 
-# subprocess.call(["adb", "shell", "pm", "grant", "com.tiktok.android", authority], shell=True)
 
 # subprocess.call("adb shell Content query uri content://{{authority/udetails}}", shell=True)
 
