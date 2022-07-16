@@ -23,6 +23,7 @@ for provider in  application.findall("provider"):
     if [provider.attrib] == "true":
         print (provider)
 
+
 filename = "tiktok.csv"
 content_filename = "tiktok_content.csv"
 
@@ -88,18 +89,21 @@ def get_authority(data3, key_authority, indices):
 data_check = check_key(data3, key)
 
 index = get_index(data3, key)
+print(index)
 authorities = get_authority(data3, key_authority, indices)
 
 
-#run each value in authorities in adb shell Content query content:// then pass quthority using subprocess
+#run each value in authorities in adb shell content query content:// then pass quthority using subprocess
 for authority in authorities:
-    subprocess.call(["adb", "shell", "Content", "query", "uri", "content://", authority], shell=True)
+    # run adb shell content query content://{{authority}} using subprocess
+    adb = subprocess.call(["adb", "shell", "content", "query", "--uri","content://"+authority], shell=True)
     time.sleep(1)
-# subprocess.call(["adb", "shell", "Content", "query", "content://", authority], shell=True)
+    
 
 
 
-# subprocess.call("adb shell Content query uri content://{{authority/udetails}}", shell=True)
+
+
 
 
 
